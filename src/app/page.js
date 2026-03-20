@@ -8,14 +8,16 @@ import { CATEGORIES } from '@/const';
 
 const CategoryCard = ({ category }) => {
   return (
-    <div
-      className="group flex flex-col items-center justify-center p-6 rounded-xl bg-samara-white2 hover:bg-samara-primary transition-colors duration-300 cursor-pointer"
-    >
-      <Image src={category.icon} alt={category.name} title={category.name} width={100} height={100} className='w-12 aspect-square' />
-      <span className="font-bold text-center group-hover:text-white transition-colors">
-        {category.name}
-      </span>
-    </div>
+    <Link href={`/search?category=${category.filterName}&sort=az&page=1`}>
+      <div
+        className="group flex flex-col items-center justify-center p-6 rounded-xl bg-samara-white2 hover:bg-samara-primary transition-colors duration-300 cursor-pointer"
+      >
+        <Image src={category.icon} alt={category.name} title={category.name} width={100} height={100} className='w-12 aspect-square' />
+        <span className="font-bold text-center group-hover:text-white transition-colors">
+          {category.name}
+        </span>
+      </div>
+    </Link>
   )
 }
 

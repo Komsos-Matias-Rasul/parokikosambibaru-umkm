@@ -29,7 +29,7 @@ export const ProductList = () => {
       </div>
 
       <div className="flex justify-center mt-12">
-        <Link href="/">
+        <Link href="/search?category=all&sort=az&page=1">
           <button className="bg-samara-primary text-white px-12 py-3 rounded-lg font-bold hover:bg-blue-800 transition-colors cursor-pointer">
             Lihat Lebih Banyak
           </button>

@@ -1,6 +1,4 @@
 "use client";
-import { Pagination } from '@/components/Pagination';
-import { ProductCard } from '@/components/ProductCard';
 import { ProductList } from '@/components/search/ProductList';
 import { SearchPagination } from '@/components/search/SearchPagination';
 import { CATEGORIES } from '@/const';
@@ -8,17 +6,8 @@ import { CATEGORIES } from '@/const';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useState, useMemo, useEffect } from 'react';
-import useSWR from 'swr';
+import { useState } from 'react';
 
-const allProducts = Array(320).fill(null).map((_, i) => ({
-  id: i,
-  name: `Produk ${i + 1} dengan nama yang...`,
-  price: 30000 + (i* 100),
-  category: i % 4 === 0 ? "kuliner" : i % 4 === 1 ? "jasa" : "fashion",
-  img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=300",
-  storeName: "something",
-}));
 
 const DEFAULT_CATEGORY = { id: 0, filterName: 'all', name: 'Semua Ketegori' }
 const SORTBY = [
