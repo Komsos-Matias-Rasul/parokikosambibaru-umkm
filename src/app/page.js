@@ -4,18 +4,22 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { PromotionBanner } from '@/components/homepage/PromotionBanner';
 import { ProductList } from '@/components/homepage/ProductList';
+import { CATEGORIES } from '@/const';
 
-const CATEGORIES = [
-  { name: 'Kuliner', icon: '/icons/1.png' },
-  { name: 'Fashion', icon: '/icons/2.png' },
-  { name: 'Jasa', icon: '/icons/3.png' },
-  { name: 'Kerajinan', icon: '/icons/4.png' },
-  { name: 'Teknologi & Kreativitas', icon: '/icons/5.png' },
-  { name: 'Kesehatan & Pendidikan', icon: '/icons/6.png' },
-];
+const CategoryCard = ({ category }) => {
+  return (
+    <div
+      className="group flex flex-col items-center justify-center p-6 rounded-xl bg-samara-white2 hover:bg-samara-primary transition-colors duration-300 cursor-pointer"
+    >
+      <Image src={category.icon} alt={category.name} title={category.name} width={100} height={100} className='w-12 aspect-square' />
+      <span className="font-bold text-center group-hover:text-white transition-colors">
+        {category.name}
+      </span>
+    </div>
+  )
+}
 
 export default function Home() {
-
   return (
     <main className="min-h-screen bg-samara-white2">
       {/* Top Nav */}
@@ -49,16 +53,8 @@ export default function Home() {
         <section className="bg-samara-white1 text-samara-text p-8 rounded-2xl mb-10">
           <h2 className="text-2xl font-bold mb-4">Kategori Produk</h2>
           <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
-            {CATEGORIES.map((cat, i) => (
-              <div
-                key={i}
-                className="group flex flex-col items-center justify-center p-6 rounded-xl bg-samara-white2 hover:bg-samara-primary transition-colors duration-300 cursor-pointer"
-              >
-                <Image src={cat.icon} alt={cat.name} title={cat.name} width={100} height={100} className='w-12 aspect-square' />
-                <span className="font-bold text-center group-hover:text-white transition-colors">
-                  {cat.name}
-                </span>
-              </div>
+            {CATEGORIES.map((cat) => (
+              <CategoryCard key={cat.id} category={cat}/>
             ))}
           </div>
           <div className="flex justify-end mt-6 items-center gap-4">
