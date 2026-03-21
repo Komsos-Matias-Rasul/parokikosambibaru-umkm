@@ -12,7 +12,7 @@ export const ProductCard = ({product}) => {
       className="bg-white rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
     >
       <div className="relative h-40 w-full overflow-hidden">
-        <Image src={product.img || "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=500&auto=format&fit=crop"} alt="product" width={400} height={400} className="object-cover w-full h-full transform hover:scale-110 transition-transform duration-500" />
+        <Image src={process.env.NEXT_PUBLIC_GCLOUD_PREFIX + product.img} alt="product" width={400} height={400} className="object-cover w-full h-full transform hover:scale-110 transition-transform duration-500" />
       </div>
       <div className="p-3">
         <p className="text-xs text-samara-secondary uppercase tracking-wider line-clamp-1">{product.category}</p>
