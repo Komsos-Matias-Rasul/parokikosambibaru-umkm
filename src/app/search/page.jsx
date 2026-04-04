@@ -1,4 +1,5 @@
 "use client";
+import Navbar from '@/components/Navbar';
 import { ProductList } from '@/components/search/ProductList';
 import { SearchPagination } from '@/components/search/SearchPagination';
 import { CATEGORIES } from '@/const';
@@ -40,7 +41,6 @@ export default function SearchPage() {
       }
     })
 
-    // Always reset to page 1 when filters change, unless we are specifically changing the page
     if (!updates.page) params.set('page', '1')
 
     router.push(`${pathname}?${params.toString()}`, { scroll: false })
@@ -48,33 +48,9 @@ export default function SearchPage() {
 
   return (
     <>
-      {/* Top Nav */}
-      <nav className="sticky top-0 z-50 border-b border-[#E8E8E8]">
-        <div className='bg-samara-white2 w-full flex gap-8 justify-end px-8 py-2 text-[#6C7A91] text-sm'>
-          <a href='https://parokikosambibaru.or.id' className="hover:text-samara-secondary cursor-pointer transition-colors">Paroki Kosambi Baru</a>
-          <span className="hover:text-samara-secondary cursor-pointer transition-colors">Tambah Produk Kamu</span>
-          <a href='https://sabuk.id/en/umk/category?paroki=39' className="hover:text-samara-secondary cursor-pointer transition-colors">Sabuk KAJ</a>
-          <span className="hover:text-samara-secondary cursor-pointer transition-colors">Hubungi Kami</span>
-        </div>
-        <div className='flex bg-samara-white1 w-full px-8 py-2 items-center gap-16'>
-          <Link href="/">
-            <Image src="/samara-umkm.png" alt="" width={400} height={480} className='w-64' />
-          </Link>
-          <div className='w-2/3 text-center'>
-            <input
-              type="text"
-              placeholder="Mau cari produk apa hari ini?"
-              className="w-full border border-[#d4d4d4] rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-offset-1 focus:ring-samara-secondary transition-all duration-300"
-              />
-          </div>
-          <div className='flex w-1/3'>
-            <Link href="/" className="text-samara-primary cursor-pointer transition-colors">Cari UMKM</Link>
-          </div>
-        </div>
-      </nav>
+      <Navbar/>
 
-      <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row gap-8">
-        {/* Sidebar Filter */}
+      <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row gap-8 pt-35">
         <aside className="w-full md:w-64 shrink-0">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 sticky top-36">
             <h2 className="font-bold text-lg mb-6">Opsi</h2>
@@ -117,7 +93,6 @@ export default function SearchPage() {
           </div>
         </aside>
 
-        {/* Content Area */}
         <section className="flex-1">
           <SearchPagination
             currentPage={currentPage}
