@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import Navbar from "@/components/Navbar"
 import { CATEGORIES } from "@/const"
+import { Suspense} from 'react';
 
 const getKategoriLabel = (id) => CATEGORIES.find(c => c.id === id)?.name ?? "Lainnya"
 
@@ -21,7 +22,6 @@ async function getTokoDetail(id) {
     return json.data
 }
 
-// ── Produk card kecil ─────────────────────────────────────────────────────────
 const MiniProductCard = ({ product, kategoriLabel }) => (
     <Link href={`/product/${product.id}`}>
         <div className="group bg-samara-white2 rounded-xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
@@ -76,7 +76,9 @@ export default async function TokoDetailPage({ params }) {
     if (!detail) { // klo gagal ora ada detil
         return (
             <>
-                <Navbar />
+                <Suspense fallback={null}>
+                    <Navbar />
+                </Suspense>
                 {/* janlup search nya */}
                 <main className="min-h-screen bg-samara-white2 flex items-center justify-center pt-26">
                     <div className="text-center">
@@ -97,7 +99,10 @@ export default async function TokoDetailPage({ params }) {
     const label = getKategoriLabel(toko.kategori)
     return (
         <>
-            <Navbar />
+            <Suspense fallback={null}>
+
+                <Navbar />
+            </Suspense>
             <main className="min-h-screen bg-samara-white2 pt-24">
 
                 {/* breadcrumb ny */}

@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import Navbar from "@/components/Navbar"
+import { Suspense } from 'react'
 
 
 const formatter = new Intl.NumberFormat('id-ID', {
@@ -29,7 +30,10 @@ export default async function ProductDetailPage({ params }) {
     if (!product) {
         return (
             <>
-                <Navbar search={search}/> 
+                <Suspense fallback={null}>
+                    <Navbar search={search}/> 
+                </Suspense>
+                
                 
                 <main className="min-h-screen bg-samara-white2 flex items-center justify-center pt-26">
                     <div className="text-center">
@@ -49,7 +53,10 @@ export default async function ProductDetailPage({ params }) {
 
     return (
         <>
-            <Navbar />
+            <Suspense fallback={null}>
+                
+                <Navbar />
+            </Suspense>
             
             <main className="min-h-screen bg-samara-white2 pt-24">
 
