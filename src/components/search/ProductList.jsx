@@ -13,9 +13,17 @@ const getProducts = async (endpoint, callback) => {
   return jsonData.data
 }
 
-export const ProductList = ({ currentPage, activeCategory, activeSort, onData = () => {} }) => {
-  const {data, error, isLoading} = useSWR([`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/umkm/products?&page=${currentPage}&category=${activeCategory}&sort=${activeSort}`, onData], ([url, callback]) => getProducts(url, callback))
-  
+export const ProductList = ({ currentPage, activeCategory, activeSort,  searchQuery = '', onData = () => {} }) => {
+  const url = new URL(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/umkm/products`)
+  url.searchParams.set('page', currentPage)
+  url.searchParams.set('category', activeCategory)
+  url.searchParams.set('sort', activeSort)
+  if (searchQuery) url.searchParams.set('q', searchQuery)
+
+  const {data, error, isLoading} = useSWR(
+    [url.toString(), onData],
+    ([endpoint, callback]) => getProducts(endpoint, callback)
+  )
   if (isLoading) return (
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
         { new Array(20).fill(null).map((_, i) => <ProductCardGhost key={i} /> )}

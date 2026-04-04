@@ -102,8 +102,9 @@ export default function SearchPage() {
             activeCategory={activeCategory}
             activeSort={activeSort}
             currentPage={currentPage}
+            searchQuery={searchQuery}
             onData={(e) => setTotalPage(e)}
-            />
+            /> 
           <SearchPagination
             currentPage={currentPage}
             pageCount={totalPage}
