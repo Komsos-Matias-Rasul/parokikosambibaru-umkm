@@ -41,7 +41,7 @@ export default function Home() {
           </div>
           <div className="flex justify-end mt-6 items-center gap-4">
             <span className="text-samara-text">atau</span>
-            <Link href="/">
+            <Link href="/umkm">
               <button className="border-2 border-samara-primary text-samara-primary px-6 py-2 rounded-lg font-bold hover:bg-samara-primary hover:text-white transition-colors cursor-pointer">
                 Cari Berdasarkan UMKM
               </button>
