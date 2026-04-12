@@ -1,4 +1,4 @@
-// components/NavbarClient.jsx
+
 'use client'
 
 import { useState, useEffect, useRef } from "react"
@@ -13,12 +13,30 @@ export default function NavbarClient() {
 
   const isUMKMMode = pathname.startsWith("/umkm")
 
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState( searchParams.get("q") ??"")
   const [suggestions, setSuggestions] = useState({ produk: [], toko: [] })
   const [showDropdown, setShowDropdown] = useState(false)
   const wrapperRef = useRef(null)
+  const isTypingRef = useRef(false) 
+
+  // onChange={e => {
+  //   isTypingRef.current = true
+  //   setInput(e.target.value)
+  // }}
+
+  const handleInputChange = (e) => {
+    isTypingRef.current = true
+    setInput(e.target.value)
+  }
+  useEffect(()=>{
+    isTypingRef.current = false
+    setInput(searchParams.get("q") ?? "")
+  },[searchParams])
 
   useEffect(() => {
+
+    if (!isTypingRef.current) return
+
     if (input.trim().length < 2) {
       setSuggestions({ produk: [], toko: [] })
       setShowDropdown(false)
@@ -53,7 +71,7 @@ export default function NavbarClient() {
 
   const handleKeyDown = (e) => {
     if (e.key === "Escape") { setShowDropdown(false); setInput("") }
-    if (e.key === "Enter" && input.trim()) {
+    if (e.key === "Enter") {
       setShowDropdown(false)
       const params = new URLSearchParams()
       params.set("q", input.trim())
@@ -83,12 +101,12 @@ export default function NavbarClient() {
 
   return (
     <>
-      {/* Search bar */}
+    
       <div className="w-2/3 relative" ref={wrapperRef}>
         <input
           type="text"
           value={input}
-          onChange={e => setInput(e.target.value)}
+          onChange={handleInputChange}
           onFocus={() => { if (hasSuggestions) setShowDropdown(true) }}
           onKeyDown={handleKeyDown}
           placeholder={isUMKMMode ? "Cari nama toko UMKM..." : "Mau cari produk apa hari ini?"}
@@ -161,7 +179,17 @@ export default function NavbarClient() {
         )}
       </div>
 
-      {/* Cari UMKM / Cari Produk toggle */}
+
+
+
+
+
+
+
+
+
+
+
       <div className="flex w-1/3">
         {isUMKMMode ? (
           <Link href="/search?category=all&sort=az&page=1" className="text-samara-primary cursor-pointer transition-colors">Cari Produk</Link>
