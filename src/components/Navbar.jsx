@@ -1,4 +1,4 @@
-// components/Navbar.jsx
+
 import { Suspense } from 'react'
 import Link from "next/link"
 import Image from "next/image"
@@ -17,7 +17,8 @@ export default function Navbar() {
         <Link href="/">
           <Image src="/samara-umkm.png" alt="" width={400} height={480} className="w-64" />
         </Link>
-        {/* Semua yang pakai useSearchParams/useRouter dipindah ke NavbarClient */}
+        
+        
         <Suspense fallback={
           <div className="w-2/3">
             <div className="w-full border border-[#d4d4d4] rounded-lg px-4 py-2 bg-gray-50 text-gray-400 text-sm">
