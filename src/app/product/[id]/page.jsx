@@ -198,7 +198,9 @@ export default async function ProductDetailPage({ params }) {
                                     {toko.whatsapp && (
                                         <a href={toko.whatsapp} target="_blank" rel="noopener noreferrer"
                                             className="flex items-center gap-3 px-4 py-3 bg-green-100 text-samara-text rounded-xl hover:bg-green-200 transition-colors w-full border border-green-300">
-                                            <span className="text-xl text-green-500">💬</span>
+                                            <span className="text-xl text-green-500">
+                                                <Image src="/wa_logo.png" width={25} height={25} alt=""  />
+                                            </span>
                                             <div>
                                                 <p className="text-xs font-bold uppercase tracking-wider text-samara-text">WhatsApp</p>
                                                 <p className="text-sm font-medium text-samara-text/60 truncate">{toko.whatsapp}</p>
@@ -208,7 +210,9 @@ export default async function ProductDetailPage({ params }) {
                                     {toko.instagram && (
                                         <a href={toko.instagram} target="_blank" rel="noopener noreferrer"
                                             className="flex items-center gap-3 px-4 py-3 bg-fuchsia-100 text-samara-text rounded-xl hover:bg-fuchsia-200 transition-colors w-full border border-fuchsia-300">
-                                            <span className="text-xl">📸</span>
+                                            <span className="text-xl">
+                                            <Image src="/ig_logo.webp" width={25} height={25} alt=""  />
+                                            </span>
                                             <div>
                                                 <p className="text-xs font-bold uppercase tracking-wider text-samara-text">Instagram</p>
                                                 <p className="text-sm font-medium text-samara-text/60 truncate">{toko.instagram}</p>

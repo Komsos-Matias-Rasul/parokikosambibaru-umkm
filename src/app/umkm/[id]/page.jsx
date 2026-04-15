@@ -48,7 +48,6 @@ const MiniProductCard = ({ product, kategoriLabel }) => (
     </Link>
 )
 
-// ── Kontak item ───────────────────────────────────────────────────────────────
 const KontakItem = ({ href, icon, label, value, colorClass, borderClass }) => (
     <a
         href={href}
@@ -56,7 +55,9 @@ const KontakItem = ({ href, icon, label, value, colorClass, borderClass }) => (
         rel="noopener noreferrer"
         className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors border ${colorClass} ${borderClass}`}
     >
-        <span className="text-xl shrink-0">{icon}</span>
+        <span className="text-xl shrink-0">
+        {icon}
+        </span>
         <div className="min-w-0">
             <p className="text-xs font-bold uppercase tracking-wider text-samara-text">{label}</p>
             <p className="text-sm text-samara-text/60 truncate">{value}</p>
@@ -64,6 +65,39 @@ const KontakItem = ({ href, icon, label, value, colorClass, borderClass }) => (
     </a>
 )
 
+const KontakItemWA = ({ href,  label, value, colorClass, borderClass }) => (
+    <a
+        href={href}
+        target={href?.startsWith("http") ? "_blank" : undefined}
+        rel="noopener noreferrer"
+        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors border ${colorClass} ${borderClass}`}
+    >
+        <span className="text-xl shrink-0">
+        <Image src="/wa_logo.png" width={25} height={25} alt=""  />
+        </span>
+        <div className="min-w-0">
+            <p className="text-xs font-bold uppercase tracking-wider text-samara-text">{label}</p>
+            <p className="text-sm text-samara-text/60 truncate">{value}</p>
+        </div>
+    </a>
+)
+
+const KontakItemIG = ({ href,  label, value, colorClass, borderClass }) => (
+    <a
+        href={href}
+        target={href?.startsWith("http") ? "_blank" : undefined}
+        rel="noopener noreferrer"
+        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors border ${colorClass} ${borderClass}`}
+    >
+        <span className="text-xl shrink-0">
+        <Image src="/ig_logo.webp" width={25} height={25} alt=""  />
+        </span>
+        <div className="min-w-0">
+            <p className="text-xs font-bold uppercase tracking-wider text-samara-text">{label}</p>
+            <p className="text-sm text-samara-text/60 truncate">{value}</p>
+        </div>
+    </a>
+)
 
 
 
@@ -183,17 +217,17 @@ export default async function TokoDetailPage({ params }) {
                                     </p>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                                         {toko.whatsapp && (
-                                            <KontakItem
+                                            <KontakItemWA
                                                 href={toko.whatsapp}
-                                                icon="💬" label="WhatsApp" value={toko.whatsapp}
+                                                label="WhatsApp" value={toko.whatsapp}
                                                 colorClass="bg-green-50 hover:bg-green-100"
                                                 borderClass="border-green-200"
                                             />
                                         )}
                                         {toko.instagram && (
-                                            <KontakItem
+                                            <KontakItemIG
                                                 href={toko.instagram}
-                                                icon="📸" label="Instagram" value={toko.instagram}
+                                                 label="Instagram" value={toko.instagram}
                                                 colorClass="bg-fuchsia-50 hover:bg-fuchsia-100"
                                                 borderClass="border-fuchsia-200"
                                             />

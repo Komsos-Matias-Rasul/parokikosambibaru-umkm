@@ -75,11 +75,15 @@ const TokoCard = ({ toko }) => {
                         <div className="flex gap-2">
                             {toko.whatsapp && (
                                 <button onClick={e => { e.preventDefault(); e.stopPropagation(); window.open(toko.whatsapp, '_blank', 'noopener,noreferrer') }}
-                                    className="w-7 h-7 rounded-full bg-green-100 hover:bg-green-200 flex items-center justify-center transition-colors text-sm" title="WhatsApp">💬</button>
+                                    className="w-7 h-7 rounded-full bg-green-100 hover:bg-green-200 flex items-center justify-center transition-colors text-sm" title="WhatsApp">
+                                        <Image src="/wa_logo.png" width={20} height={20} alt=""  />
+                                    </button>
                             )}
                             {toko.instagram && (
                                 <button onClick={e => { e.preventDefault(); e.stopPropagation(); window.open(toko.instagram, '_blank', 'noopener,noreferrer') }}
-                                    className="w-7 h-7 rounded-full bg-fuchsia-100 hover:bg-fuchsia-200 flex items-center justify-center transition-colors text-sm" title="Instagram">📸</button>
+                                    className="w-7 h-7 rounded-full bg-fuchsia-100 hover:bg-fuchsia-200 flex items-center justify-center transition-colors text-sm" title="Instagram">
+                                        <Image src="/ig_logo.webp" width={20} height={20} alt=""  />
+                                        </button>
                             )}
                         </div>
                     </div>
