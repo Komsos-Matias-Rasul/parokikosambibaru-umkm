@@ -202,8 +202,8 @@ export default async function ProductDetailPage({ params }) {
                                                 <Image src="/wa_logo.png" width={25} height={25} alt=""  />
                                             </span>
                                             <div>
-                                                <p className="text-xs font-bold uppercase tracking-wider text-samara-text">WhatsApp</p>
-                                                <p className="text-sm font-medium text-samara-text/60 truncate">{toko.whatsapp}</p>
+                                                <p className="text-sm font-bold uppercase tracking-wider text-samara-text">WhatsApp</p>
+                                                <p className="text-sm font-medium text-samara-text/60 truncate">{toko.telepon}</p>
                                             </div>
                                         </a>
                                     )}
@@ -215,7 +215,7 @@ export default async function ProductDetailPage({ params }) {
                                             </span>
                                             <div>
                                                 <p className="text-xs font-bold uppercase tracking-wider text-samara-text">Instagram</p>
-                                                <p className="text-sm font-medium text-samara-text/60 truncate">{toko.instagram}</p>
+                                                <p className="text-sm font-medium text-samara-text/60 truncate">{String(toko.instagram).split("/")[3]}</p>
                                             </div>
                                         </a>
                                     )}
